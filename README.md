@@ -27,7 +27,6 @@ yarn dev
 - Prettier
 - CI/CD
   - Github Action - CI
-  - Vercel - CD
 
 ## Publish
 

@@ -1,4 +1,4 @@
-const descriptionMd = `Nuxt Typescript Template`
+const descriptionMd = `Sortable column with react-query and Graphql`
 
 const description = descriptionMd
   .replace(/\[([^\]]+)\](\([^)]+\)|\[[^\]]+\])/g, '$1')
@@ -7,15 +7,15 @@ const description = descriptionMd
   .trim()
 
 module.exports = {
-  title: 'Seongland',
+  title: 'User Management',
   descriptionMd,
   description,
   url: 'https://www.seongland.com',
-  twitterUsername: '@SeonglaeC',
-  email: 'seongle3737@gmail.com',
+  twitterUsername: '@dionaditya',
+  email: 'dionjatingaleh@gmail.com',
   socials: {
-    GitHub: 'https://github.com/seongland/seongland-ing',
-    Twitter: 'https://twitter.com/SeonglaeC',
+    GitHub: 'https://github.com/dionaditya/user-table-crud-graphql',
+    Twitter: 'https://twitter.com/dionaditya',
   },
   bgColor: '#1A202C',
   themeColor: '#46c0aE',
