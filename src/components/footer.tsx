@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box, Divider, Flex, HStack, Icon, Link, Stack, Button } from '@chakra-ui/react'
 import { useSocials } from '@/hooks/app'
-import { FaCode, FaGithub } from 'react-icons/fa'
+import { FaGithub } from 'react-icons/fa'
 
 export const Footer: React.FC = () => {
   const socials = useSocials()
