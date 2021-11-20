@@ -1,5 +1,3 @@
-import '@/stylesheets/html.css'
-
 import * as React from 'react'
 import { Box, ChakraProvider, Stack } from '@chakra-ui/react'
 import { DefaultSeo, SocialProfileJsonLd } from 'next-seo'
@@ -15,6 +13,9 @@ import siteConfig from '~/site-config'
 
 import type { AppProps } from '@/types/next'
 
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
 const MobileDrawer = dynamic(() => import('@/components/mobile-drawer').then(C => C.MobileDrawer))
 
 Router.events.on('routeChangeStart', () => NProgress.start())
@@ -23,6 +24,8 @@ Router.events.on('routeChangeError', () => NProgress.done())
 
 function App(props: AppProps) {
   const { Component, pageProps, router } = props
+
+  const [queryClient] = React.useState(() => new QueryClient());
 
   return (
     <>
@@ -63,23 +66,29 @@ function App(props: AppProps) {
         sameAs={Object.values(siteConfig.socials)}
       />
 
-      <ChakraProvider resetCSS theme={theme}>
-        {Component.disableLayout ? (
-          <Component {...pageProps} />
-        ) : (
-          <>
-            <Stack justify="space-between" minH="100vh" spacing={0}>
-              <Navbar />
-              <Box as="main">
-                <Component {...pageProps} />
-              </Box>
-              <Footer />
-            </Stack>
+      
+      <QueryClientProvider client={queryClient}>
+        <ChakraProvider resetCSS theme={theme}>
+          {Component.disableLayout ? (
+            <Component {...pageProps} />
+          ) : (
+            <>
+              <Stack justify="space-between" minH="100vh" spacing={0}>
+                <Navbar />
+                <Box as="main">
+                  <Component {...pageProps} />
+                </Box>
+                <Footer />
+              </Stack>
 
-            <MobileDrawer />
-          </>
-        )}
-      </ChakraProvider>
+              <MobileDrawer />
+            </>
+          )}
+        </ChakraProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+      
+     
     </>
   )
 }
