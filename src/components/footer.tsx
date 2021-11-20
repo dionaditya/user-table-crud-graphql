@@ -6,6 +6,10 @@ import { FaGithub } from 'react-icons/fa'
 export const Footer: React.FC = () => {
   const socials = useSocials()
 
+  const [github] = socials
+  
+  const [githubHref] = github
+
   return (
     <Stack as="footer" pb={16} pt={8} spacing={8}>
       <Box px={8}>
@@ -21,7 +25,7 @@ export const Footer: React.FC = () => {
             ))}
           </HStack>
         </Stack>
-        <Button as="a" href={"#"} leftIcon={<Icon as={FaGithub} />}>
+        <Button as="a" href={githubHref} leftIcon={<Icon as={FaGithub} />}>
               View source on GitHub
         </Button>
       </Flex>
