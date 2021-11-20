@@ -17,16 +17,18 @@
     "format": "run-p \"format:**\"",
     "format:index": "prettier --write \"*.{js,json,md}\"",
     "format:src": "prettier --write \"src/**/*.{css,js,ts,tsx}\"",
-    "test": "jest --env=jsdom --watch",
+    "test": "jest --env=jsdom --watch ",
     "test:file": "jest --env=jsdom --findRelatedTests --watch",
-    "test:ci": "jest --env=jsdom -- --coverage --watchAll=false"
+    "test:ci": "jest --env=jsdom --watchAll=false"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.1.1",
     "@chakra-ui/react": "^1.1.4",
     "@chakra-ui/theme-tools": "^1.0.3",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
     "chrome-aws-lambda": "^5.5.0",
+    "date-fns": "^2.26.0",
     "favicons": "^6.2.0",
     "framer-motion": "^3.2.1",
     "graphql": "15.5.1",
@@ -36,6 +38,7 @@
     "nprogress": "^0.2.0",
     "prism-react-renderer": "^1.1.1",
     "puppeteer": "^5.5.0",
+    "ramda": "^0.27.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",

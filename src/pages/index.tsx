@@ -1,7 +1,6 @@
 import * as React from 'react'
 
 import { Button, Heading, Icon, Stack, Wrap, WrapItem } from '@chakra-ui/react'
-import { FaCode, FaGithub } from 'react-icons/fa'
 import { NextSeo } from 'next-seo'
 import { UserDashboard } from'@/features/UserDashboard'
 
@@ -21,12 +20,6 @@ const HomePage: NextPage = () => {
 
         <Wrap justify="center" spacing={4}>
           <UserDashboard />
-
-          <WrapItem>
-            <Button as="a" href={siteConfig.socials.GitHub} leftIcon={<Icon as={FaGithub} />}>
-              View source on GitHub
-            </Button>
-          </WrapItem>
         </Wrap>
       </Stack>
     </>

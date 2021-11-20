@@ -10,7 +10,7 @@ interface IAdhocProvider {
   children: JSX.Element | JSX.Element[]
 }
 
-const AdhocProvider: React.FC<IAdhocProvider> = props => {
+export const AdhocProvider: React.FC<IAdhocProvider> = props => {
   return (
     <ChakraProvider resetCSS theme={theme}>
       {props.children}
