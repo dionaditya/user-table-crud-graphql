@@ -3,6 +3,7 @@ import * as React from 'react'
 import { Button, Heading, Icon, Stack, Wrap, WrapItem } from '@chakra-ui/react'
 import { FaCode, FaGithub } from 'react-icons/fa'
 import { NextSeo } from 'next-seo'
+import { UserDashboard } from'@/features/UserDashboard'
 
 import siteConfig from '~/site-config'
 
@@ -19,18 +20,7 @@ const HomePage: NextPage = () => {
         </Heading>
 
         <Wrap justify="center" spacing={4}>
-          <WrapItem>
-            <Button
-              as="a"
-              bgColor={siteConfig.themeColor}
-              href="https://doc.seongland.com"
-              leftIcon={<Icon as={FaCode} />}
-              target="_blank"
-            >
-              {' '}
-              View usage
-            </Button>
-          </WrapItem>
+          <UserDashboard />
 
           <WrapItem>
             <Button as="a" href={siteConfig.socials.GitHub} leftIcon={<Icon as={FaGithub} />}>
