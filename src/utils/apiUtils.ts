@@ -1,1 +1,1 @@
-export const BASE_URL = 'http://localhost:3000'
+export const BASE_URL = 'https://user-mock-graphql.herokuapp.com/graphql'
