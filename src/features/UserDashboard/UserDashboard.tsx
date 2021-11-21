@@ -263,7 +263,9 @@ const UserDashboard = () => {
               >
                 {COLUMNS.map(column => {
                   return (
-                    <Th key={column.name} onClick={() => setNextDirection(column.data_mapper)}>
+                    <Th css={{
+                      cursor: 'pointer'
+                    }} key={column.name} onClick={() => setNextDirection(column.data_mapper)}>
                       <Flex>
                         <Text>{column.name}</Text>
                         {sortParams.sortedColumn === column.data_mapper && sortParams.currentSortDirection === 'ASC' && (
@@ -291,6 +293,9 @@ const UserDashboard = () => {
                       }}
                       onMouseLeave={() => {
                         setHoveredRow('')
+                      }}
+                      css={{
+                        height: 80,
                       }}
                     >
                       {COLUMNS.map((column, columnIndex) => {
