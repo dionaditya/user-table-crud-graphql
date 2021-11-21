@@ -7,6 +7,7 @@ export const GET_ALL_USER = gql`
             user_name
             email
             registered
+            score
         }
     }
 `;
@@ -18,6 +19,7 @@ export const ADD_USER_DATA = gql`
         user_name
         email
         registered
+        score
       }
     }
 `;
@@ -30,6 +32,7 @@ export const UPDATE_USER_DATA = gql`
         user_name
         email
         registered
+        score
       }
     }
 `;
@@ -41,6 +44,7 @@ export const DELETE_USER_DATA = gql`
         user_name
         email
         registered
+        score
       }
     }
 `;

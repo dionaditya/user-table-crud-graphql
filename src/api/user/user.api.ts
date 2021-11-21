@@ -13,8 +13,8 @@ const addUserData = async (userData: Omit<User, 'user_id'>) => {
     userData: JSON.stringify(userData)
   })
 
-  const {email, user_name} = userData
-  return {...user_data, email, user_name} as User
+  const {email, user_name, score } = userData
+  return {...user_data, email, user_name, score} as User
 }
 
 const updateUserData = async (id: string, updatedUserData: User) => {

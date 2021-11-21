@@ -45,6 +45,15 @@ const USER_FORMS: UserForm[] = [
     validation: isEmailValid,
     errorMessage: 'Your email invalid',
   },
+  {
+    label: 'Score',
+    placeholder: 'Insert user score',
+    data_mapper: 'score',
+    validation: (value: string | number) => {
+      return typeof value !== 'string'
+    },
+    errorMessage: 'Please submit user score'
+  },
 ]
 
 const UserFormModal: React.FC<IUserFormModalProps> = ({
@@ -69,7 +78,7 @@ const UserFormModal: React.FC<IUserFormModalProps> = ({
     setUserDataFormState(userData)
   }, [userData])
 
-  const handleUserForm = (newValue: string, data_mapper: string) => {
+  const handleUserForm = (newValue: string | number, data_mapper: string) => {
     setUserDataFormState({
       ...userDataFormState,
       [data_mapper]: newValue,
@@ -89,6 +98,7 @@ const UserFormModal: React.FC<IUserFormModalProps> = ({
           <Fragment>
             {USER_FORMS.map(userForm => {
               const shouldHideIdField = !isUpdate && userForm.label === 'ID'
+              const isScoreFields = userForm.data_mapper === "score"
 
               if (shouldHideIdField) {
                 return null
@@ -104,6 +114,7 @@ const UserFormModal: React.FC<IUserFormModalProps> = ({
                     disabled={userForm.isDisabled}
                     value={userDataFormState[userForm.data_mapper]}
                     onChange={event => handleUserForm(event.target.value, userForm.data_mapper)}
+                    type={isScoreFields ? 'number' : 'text'}
                   />
                   {userForm?.errorMessage &&
                     shouldRenderError &&

@@ -24,6 +24,10 @@ const COLUMNS = [
     data_mapper: 'email',
   },
   {
+    name: 'score',
+    data_mapper: 'score',
+  },
+  {
     name: 'registered',
     data_mapper: 'registered',
   },
@@ -34,6 +38,7 @@ const DEFAULT_USER_FORM_VALUE = {
   user_id: '',
   email: '',
   registered: '',
+  score: 0
 }
 
 type SortDirection = 'ASC' | 'DESC' | 'NONE'

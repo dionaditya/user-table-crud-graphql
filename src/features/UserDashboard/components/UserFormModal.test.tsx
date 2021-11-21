@@ -33,7 +33,7 @@ describe('Component: UserFormModal', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
-  
+
   it('should render add new user modal form correctly', () => {
     render(
       <AdhocProvider>
@@ -43,6 +43,7 @@ describe('Component: UserFormModal', () => {
             user_name: '',
             email: '',
             registered: '',
+            score: 0
           }}
           isUpdateSession={false}
         />
@@ -80,6 +81,7 @@ describe('Component: UserFormModal', () => {
       user_name: 'John Doe',
       email: 'johndoe@mail.com',
       registered: '',
+      score: 0,
     })
 
     expect(screen.queryByText('Add New User')).toBeNull()
@@ -102,6 +104,7 @@ describe('Component: UserFormModal', () => {
             user_name: 'Trevor Macejkovic',
             email: 'Alvera8@hotmail.com',
             registered: '2026-06-18T09:02:28Z',
+            score: 12
           }}
           isUpdateSession={true}
         />
@@ -125,6 +128,7 @@ describe('Component: UserFormModal', () => {
       user_name: 'John Doe',
       email: 'Alvera8@hotmail.com',
       registered: '2026-06-18T09:02:28Z',
+      score: 12
     })
   })
 })
