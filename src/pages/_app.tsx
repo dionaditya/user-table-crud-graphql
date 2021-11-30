@@ -73,7 +73,7 @@ function App(props: AppProps) {
             <Component {...pageProps} />
           ) : (
             <>
-              <Stack justify="space-between" minH="100vh" spacing={0}>
+                <Stack justify="space-between" minH="100vh" spacing={0}>
                 <Navbar />
                 <Box as="main">
                   <Component {...pageProps} />

@@ -48,6 +48,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@emotion/babel-plugin": "^11.3.0",
+    "@svgr/webpack": "^6.0.0",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
