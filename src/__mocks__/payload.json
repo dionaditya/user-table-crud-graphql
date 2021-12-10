@@ -1,0 +1,285 @@
+{
+    "steps": {
+        "profile": {
+            "msg": null,
+            "executed": true,
+            "data": {
+                "processing": {
+                    "policies_ordered": [
+                        86,
+                        1,
+                        2,
+                        3
+                    ],
+                    "policies_filtered": [
+                        1,
+                        2,
+                        3,
+                        86
+                    ],
+                    "policies_with_operations": [
+                        1,
+                        2,
+                        3,
+                        86
+                    ]
+                },
+                "result": "/profiles/1",
+                "policies": [
+                    2
+                ],
+                "allowed": true,
+                "profileId": 10,
+                "evaluations": [
+                    {
+                        "result": null,
+                        "path": "/profiles/12",
+                        "evaluations": [
+                            {
+                                "result": {
+                                    "error": {
+                                        "msg": "LDAP Filter not specified.",
+                                        "code": 6500,
+                                        "data": null
+                                    }
+                                },
+                                "id": 84,
+                                "allowed": false
+                            }
+                        ],
+                        "id": 86,
+                        "allowed": false
+                    },
+                    {
+                        "result": null,
+                        "path": "/profiles/13",
+                        "evaluations": [
+                            {
+                                "result": {
+                                    "error": {
+                                        "msg": "LDAP Filter too specific, no results returned, filter:(&(&(objectClass=user)(mail=john.doe+test@mycompany.com))(distinguishedName=CN=John Doe,CN=Users,DC=mycompanySharePoint,DC=com))",
+                                        "code": 6500,
+                                        "data": null
+                                    }
+                                },
+                                "id": 1,
+                                "allowed": false
+                            }
+                        ],
+                        "id": 1,
+                        "allowed": false
+                    },
+                    {
+                        "result": "/profiles/10",
+                        "path": "/profiles/10",
+                        "evaluations": [
+                            {
+                                "result": null,
+                                "id": 2,
+                                "allowed": true
+                            }
+                        ],
+                        "id": 2,
+                        "allowed": true
+                    }
+                ]
+            },
+            "pass": true,
+            "desc": "Profile Mapping"
+        },
+        "mappings": {
+            "msg": null,
+            "executed": true,
+            "data": {
+                "profile": {
+                    "built_in": 1,
+                    "prototype": null,
+                    "id": 1,
+                    "cloneable": 1,
+                    "name": "standard"
+                },
+                "location": null
+            },
+            "pass": true,
+            "desc": "User mapped settings"
+        },
+        "settings": {
+            "msg": {
+                "error": {
+                    "msg": "Hello"
+                }
+            },
+            "executed": true,
+            "data": [
+                "CN=John Doe,CN=Users,DC=mycompanySharePoint,DC=com",
+                {
+                    "distinguishedName": [
+                        "CN=John Doe,CN=Users,DC=mycompanySharePoint,DC=com"
+                    ],
+                    "memberOf": [
+                        "CN=Mary's Group,CN=Users,DC=mycompanySharePoint,DC=com",
+                        "CN=ARUsers,OU=AccessRestricted,DC=mycompanySharePoint,DC=com",
+                        "CN=API Team,OU=Êûřőþã,DC=mycompanySharePoint,DC=com",
+                        "CN=goodworkers,OU=Êûřőþã,DC=mycompanySharePoint,DC=com",
+                        "CN=ADSiteMembers,CN=Users,DC=mycompanySharePoint,DC=com",
+                        "CN=ADSiteOwners,CN=Users,DC=mycompanySharePoint,DC=com",
+                        "CN=Domain Admins,CN=Users,DC=mycompanySharePoint,DC=com",
+                        "CN=Remote Desktop Users,CN=Builtin,DC=mycompanySharePoint,DC=com",
+                        "CN=Administrators,CN=Builtin,DC=mycompanySharePoint,DC=com"
+                    ],
+                    "displayName": [
+                        "John LDAP Doe"
+                    ],
+                    "sAMAccountName": [
+                        "john.doe"
+                    ],
+                    "mail": [
+                        "john.doe@mycompany.com"
+                    ]
+                }
+            ],
+            "pass": false,
+            "desc": "LDAP configuration"
+        },
+        "user": {
+            "msg": null,
+            "executed": true,
+            "data": [
+                "CN=John Doe,CN=Users,DC=mycompanySharePoint,DC=com",
+                {
+                    "distinguishedName": [
+                        "userCN=John Doe,CN=Users,DC=mycompanySharePoint,DC=com"
+                    ],
+                    "memberOf": [
+                        "CN=Mary's Group,CN=Users,DC=mycompanySharePoint,DC=com",
+                        "CN=ARUsers,OU=AccessRestricted,DC=mycompanySharePoint,DC=com",
+                        "CN=API Team,OU=Êûřőþã,DC=mycompanySharePoint,DC=com",
+                        "CN=goodworkers,OU=Êûřőþã,DC=mycompanySharePoint,DC=com",
+                        "CN=ADSiteMembers,CN=Users,DC=mycompanySharePoint,DC=com",
+                        "CN=ADSiteOwners,CN=Users,DC=mycompanySharePoint,DC=com",
+                        "CN=Domain Admins,CN=Users,DC=mycompanySharePoint,DC=com",
+                        "CN=Remote Desktop Users,CN=Builtin,DC=mycompanySharePoint,DC=com",
+                        "CN=Administrators,CN=Builtin,DC=mycompanySharePoint,DC=com"
+                    ],
+                    "displayName": [
+                        "John LDAP Doe"
+                    ],
+                    "sAMAccountName": [
+                        "john.doe"
+                    ],
+                    "mail": [
+                        "john.doe@mycompany.com"
+                    ]
+                }
+            ],
+            "pass": true,
+            "desc": "LDAP user found"
+        },
+        "details": {
+            "msg": null,
+            "executed": true,
+            "data": [
+                "CN=John Doe,CN=Users,DC=mycompanySharePoint,DC=com",
+                {
+                    "distinguishedName": [
+                        "detailsCN=John Doe,CN=Users,DC=mycompanySharePoint,DC=com"
+                    ],
+                    "memberOf": [
+                        "CN=Mary's Group,CN=Users,DC=mycompanySharePoint,DC=com",
+                        "CN=ARUsers,OU=AccessRestricted,DC=mycompanySharePoint,DC=com",
+                        "CN=API Team,OU=Êûřőþã,DC=mycompanySharePoint,DC=com",
+                        "CN=goodworkers,OU=Êûřőþã,DC=mycompanySharePoint,DC=com",
+                        "CN=ADSiteMembers,CN=Users,DC=mycompanySharePoint,DC=com",
+                        "CN=ADSiteOwners,CN=Users,DC=mycompanySharePoint,DC=com",
+                        "CN=Domain Admins,CN=Users,DC=mycompanySharePoint,DC=com",
+                        "CN=Remote Desktop Users,CN=Builtin,DC=mycompanySharePoint,DC=com",
+                        "CN=Administrators,CN=Builtin,DC=mycompanySharePoint,DC=com"
+                    ],
+                    "displayName": [
+                        "John LDAP Doe"
+                    ],
+                    "sAMAccountName": [
+                        "john.doe"
+                    ],
+                    "mail": [
+                        "john.doe@mycompany.com"
+                    ]
+                }
+            ],
+            "pass": true,
+            "desc": "LDAP user details"
+        },
+        "validate": {
+            "msg": null,
+            "executed": true,
+            "data": null,
+            "pass": true,
+            "desc": "LDAP filter validation"
+        },
+        "assertions": {
+            "msg": null,
+            "executed": true,
+            "data": {
+                "distinguishedName": [
+                    "assertionsCN=John Doe,CN=Users,DC=mycompanySharePoint,DC=com"
+                ],
+                "profile": [
+                    1
+                ],
+                "displayName": [
+                    "John LDAP Doe"
+                ],
+                "sAMAccountName": [
+                    "john.doe"
+                ],
+                "memberOf": [
+                    "CN=Mary's Group,CN=Users,DC=mycompanySharePoint,DC=com",
+                    "CN=ARUsers,OU=AccessRestricted,DC=mycompanySharePoint,DC=com",
+                    "CN=API Team,OU=Êûřőþã,DC=mycompanySharePoint,DC=com",
+                    "CN=goodworkers,OU=Êûřőþã,DC=mycompanySharePoint,DC=com",
+                    "CN=ADSiteMembers,CN=Users,DC=mycompanySharePoint,DC=com",
+                    "CN=ADSiteOwners,CN=Users,DC=mycompanySharePoint,DC=com",
+                    "CN=Domain Admins,CN=Users,DC=mycompanySharePoint,DC=com",
+                    "CN=Remote Desktop Users,CN=Builtin,DC=mycompanySharePoint,DC=com",
+                    "CN=Administrators,CN=Builtin,DC=mycompanySharePoint,DC=com"
+                ],
+                "usertype": [
+                    1
+                ],
+                "groups": [
+                    "CN=Mary's Group,CN=Users,DC=mycompanySharePoint,DC=com",
+                    "CN=ARUsers,OU=AccessRestricted,DC=mycompanySharePoint,DC=com",
+                    "CN=API Team,OU=Êûřőþã,DC=mycompanySharePoint,DC=com",
+                    "CN=goodworkers,OU=Êûřőþã,DC=mycompanySharePoint,DC=com",
+                    "CN=ADSiteMembers,CN=Users,DC=mycompanySharePoint,DC=com",
+                    "CN=ADSiteOwners,CN=Users,DC=mycompanySharePoint,DC=com",
+                    "CN=Domain Admins,CN=Users,DC=mycompanySharePoint,DC=com",
+                    "CN=Remote Desktop Users,CN=Builtin,DC=mycompanySharePoint,DC=com",
+                    "CN=Administrators,CN=Builtin,DC=mycompanySharePoint,DC=com"
+                ],
+                "ecm_username": [
+                    "john.doe"
+                ],
+                "mail": [
+                    "john.doe@mycompany.com"
+                ],
+                "uid": [
+                    "CN=John Doe,CN=Users,DC=mycompanySharePoint,DC=com"
+                ]
+            },
+            "pass": true,
+            "desc": "SAML assertions"
+        }
+    },
+    "order": [
+        "settings",
+        "validate",
+        "user",
+        "details",
+        "profile",
+        "assertions",
+        "mappings"
+    ],
+    "failure_dn": [],
+    "success": 1
+}
