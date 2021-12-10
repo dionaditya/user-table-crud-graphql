@@ -1,7 +1,19 @@
 import React, { useState, Fragment, useEffect } from 'react'
 import { CustomModal } from '../../../components/CustomModal'
 import { User } from '../../../interfaces/user'
-import { FormControl, FormLabel, Input, Button, Flex, Text } from '@chakra-ui/react'
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Flex,
+  Text,
+  NumberInput,
+  NumberInputField,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInputStepper,
+} from '@chakra-ui/react'
 
 interface IUserFormModalProps {
   isOpen: boolean
@@ -50,9 +62,9 @@ const USER_FORMS: UserForm[] = [
     placeholder: 'Insert user score',
     data_mapper: 'score',
     validation: (value: string | number) => {
-      return typeof value !== 'string'
+      return typeof value !== 'string' && value <= 100
     },
-    errorMessage: 'Please submit user score'
+    errorMessage: 'Score must be number between 0-100',
   },
 ]
 
@@ -98,10 +110,51 @@ const UserFormModal: React.FC<IUserFormModalProps> = ({
           <Fragment>
             {USER_FORMS.map(userForm => {
               const shouldHideIdField = !isUpdate && userForm.label === 'ID'
-              const isScoreFields = userForm.data_mapper === "score"
+              const isScoreFields = userForm.data_mapper === 'score'
 
               if (shouldHideIdField) {
                 return null
+              }
+
+              if (isScoreFields) {
+                return (
+                  <FormControl
+                   key={userForm.label}
+                  >
+                    <FormLabel>{userForm.label}</FormLabel>
+                    <NumberInput
+                      onChange={valueString => {
+                        if (!valueString.length) {
+                          handleUserForm(valueString, userForm.data_mapper)
+                        } else {
+                          handleUserForm(+valueString, userForm.data_mapper)
+                        }
+                      }}
+                      defaultValue={userDataFormState.score}
+                      min={0}
+                      max={100}
+                      allowMouseWheel
+                    >
+                      <NumberInputField value={userDataFormState.score} />
+                      <NumberInputStepper>
+                        <NumberIncrementStepper />
+                        <NumberDecrementStepper />
+                      </NumberInputStepper>
+                    </NumberInput>
+                    {userForm?.errorMessage &&
+                      shouldRenderError &&
+                      isFormError(userForm, userDataFormState[userForm.data_mapper]) &&  (
+                        <Text
+                          color="red.300"
+                          css={{
+                            fontSize: '13px',
+                          }}
+                        >
+                          {userForm.errorMessage}
+                        </Text>
+                      )}
+                  </FormControl>
+                )
               }
 
               return (
@@ -114,7 +167,7 @@ const UserFormModal: React.FC<IUserFormModalProps> = ({
                     disabled={userForm.isDisabled}
                     value={userDataFormState[userForm.data_mapper]}
                     onChange={event => handleUserForm(event.target.value, userForm.data_mapper)}
-                    type={isScoreFields ? 'number' : 'text'}
+                    type="text"
                   />
                   {userForm?.errorMessage &&
                     shouldRenderError &&

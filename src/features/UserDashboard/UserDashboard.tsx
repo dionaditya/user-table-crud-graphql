@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { jsx, css } from '@emotion/react'
 import React, { useState, useEffect } from 'react'
 import { useQuery, useMutation } from 'react-query'
 import { userApi } from '../../api/user'
@@ -5,10 +7,26 @@ import { User } from '../../interfaces/user'
 import { UserFormModal } from './components/UserFormModal'
 import { useToast } from '@chakra-ui/react'
 import { AlertDeleteUser } from './components/AlertDeleteUser'
-import { Flex, Text, Heading, Button, Table, Thead, Tbody, Tr, Th, Td, IconButton } from '@chakra-ui/react'
-import { ArrowUpIcon, ArrowDownIcon, DeleteIcon } from '@chakra-ui/icons'
+import {
+  Flex,
+  Text,
+  Heading,
+  Button,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  IconButton,
+  Input,
+  InputGroup,
+  InputLeftElement,
+} from '@chakra-ui/react'
+import { ArrowUpIcon, ArrowDownIcon, DeleteIcon, SearchIcon } from '@chakra-ui/icons'
 import { sortAscendingArrayBySpesificKey, sortDescendingArrayBySpesificKey } from '../../utils/arrayUtil'
 import { compareAsc, compareDesc } from 'date-fns'
+import { stringSimilarity } from '../../utils/stringUtils'
 
 const COLUMNS = [
   {
@@ -38,7 +56,7 @@ const DEFAULT_USER_FORM_VALUE = {
   user_id: '',
   email: '',
   registered: '',
-  score: 0
+  score: 0,
 }
 
 type SortDirection = 'ASC' | 'DESC' | 'NONE'
@@ -117,6 +135,7 @@ const UserDashboard = () => {
   const [isUpdateSession, setUpdateSession] = useState(false)
   const [isAlertDeleteUserOpen, setAlerDeleteUserOpen] = React.useState(false)
   const { sortParams, setNextDirection } = useSortDirection()
+  const [searchQuery, setSearchQuery] = useState('')
 
   const [hoveredRow, setHoveredRow] = useState('')
 
@@ -133,9 +152,9 @@ const UserDashboard = () => {
     }
 
     if (sortedColumn !== 'registered') {
-      setUserList((prevUserList) => sortCurrentUserList(currentSortDirection, sortedColumn, prevUserList))
+      setUserList(prevUserList => sortCurrentUserList(currentSortDirection, sortedColumn, prevUserList))
     } else {
-      setUserList((prevUserList) => sortCurrentUserListByRegisteredColumn(currentSortDirection, prevUserList))
+      setUserList(prevUserList => sortCurrentUserListByRegisteredColumn(currentSortDirection, prevUserList))
     }
   }, [sortParams])
 
@@ -229,7 +248,7 @@ const UserDashboard = () => {
       <Flex width="100%" justifyContent="space-between" marginBottom={10}>
         <Flex alignItems="center">
           <Heading as="h2" size="xl">
-            Users
+            User
           </Heading>
           <Text
             css={{
@@ -237,7 +256,7 @@ const UserDashboard = () => {
               fontWeight: 100,
             }}
           >
-            {usersList.length} people
+            {usersList.length} items
           </Text>
         </Flex>
         <Button
@@ -250,86 +269,125 @@ const UserDashboard = () => {
           Add new user
         </Button>
       </Flex>
-          <Table variant="simple">
-            <Thead>
-              <Tr
-                css={{
-                  position: 'sticky',
-                  top: 0,
-                  left: 0,
-                  zIndex: 2,
-                  background: 'white  ',
-                }}
-              >
-                {COLUMNS.map(column => {
-                  return (
-                    <Th key={column.name} onClick={() => setNextDirection(column.data_mapper)}>
-                      <Flex>
-                        <Text>{column.name}</Text>
-                        {sortParams.sortedColumn === column.data_mapper && sortParams.currentSortDirection === 'ASC' && (
-                          <ArrowDownIcon />
-                        )}
+      <div
+        css={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'left',
+          marginBottom: '20px'
+        }}
+      >
+        <InputGroup size="md">
+          <InputLeftElement>
+            <IconButton background="transparent" icon={<SearchIcon />} aria-label="search icon"/>
+          </InputLeftElement>
+          <Input
+            placeholder="Basic usage"
+            css={{
+              background: 'white',
+              width: '200px',
+              paddingLeft: '32px',
+            }}
+            value={searchQuery}
+            onChange={(event) => {
+              setSearchQuery(event.target.value)
+            }}
+          />
+        </InputGroup>
+      </div>
 
-                        {sortParams.sortedColumn === column.data_mapper && sortParams.currentSortDirection === 'DESC' && (
-                          <ArrowUpIcon />
-                        )}
-                      </Flex>
-                    </Th>
-                  )
-                })}
-                <Th></Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {usersList.length > 0 &&
-                usersList.map((user, rowIndex) => {
-                  return (
-                    <Tr
-                      key={user.user_id}
-                      onMouseEnter={() => {
-                        setHoveredRow(user.user_id)
-                      }}
-                      onMouseLeave={() => {
-                        setHoveredRow('')
-                      }}
-                    >
-                      {COLUMNS.map((column, columnIndex) => {
-                        return (
-                          <Td
-                            onClick={() => {
-                              setUserFormValue({ ...user })
-                              setUserFormModalOpen(true)
-                              setUpdateSession(true)
-                            }}
-                            css={{
-                              marginRight: '6px',
-                              fontWeight: column.name === 'name' ? 'bold' : 'normal',
-                              cursor: column.name === 'name' ? 'pointer' : '',
-                            }}
-                            key={column.name + user.user_id}
-                            data-testid={`row-${rowIndex}-column-${columnIndex}`}
-                          >
-                            {user[column.data_mapper]}
-                          </Td>
-                        )
-                      })}
-                      <Td>
-                        {hoveredRow === user.user_id && (
-                          <IconButton
-                            aria-label={`delete-${user.user_id}`}
-                            icon={<DeleteIcon />}
-                            onClick={() => {
-                              setUserFormValue({ ...user })
-                              setAlerDeleteUserOpen(true)
-                            }}
-                          />
-                        )}
+      <Table variant="simple">
+        <Thead>
+          <Tr
+            css={{
+              position: 'sticky',
+              top: 0,
+              left: 0,
+              zIndex: 2,
+              background: 'white  ',
+            }}
+          >
+            {COLUMNS.map(column => {
+              return (
+                <Th
+                  css={{
+                    cursor: 'pointer',
+                  }}
+                  key={column.name}
+                  onClick={() => setNextDirection(column.data_mapper)}
+                >
+                  <Flex>
+                    <Text>{column.name}</Text>
+                    {sortParams.sortedColumn === column.data_mapper && sortParams.currentSortDirection === 'ASC' && (
+                      <ArrowDownIcon />
+                    )}
+
+                    {sortParams.sortedColumn === column.data_mapper && sortParams.currentSortDirection === 'DESC' && (
+                      <ArrowUpIcon />
+                    )}
+                  </Flex>
+                </Th>
+              )
+            })}
+            <Th></Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {usersList.length > 0 &&
+            usersList.filter((user) => {
+              console.log(stringSimilarity(searchQuery, user.user_name))
+              return searchQuery.length > 0 ? stringSimilarity(searchQuery, user.user_name) >= 0.1 : true
+            }).map((user, rowIndex) => {
+              return (
+                <Tr
+                  key={user.user_id}
+                  onMouseEnter={() => {
+                    setHoveredRow(user.user_id)
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredRow('')
+                  }}
+                  css={{
+                    height: 80,
+                  }}
+                >
+                  {COLUMNS.map((column, columnIndex) => {
+                    return (
+                      <Td
+                        onClick={() => {
+                          setUserFormValue({ ...user })
+                          setUserFormModalOpen(true)
+                          setUpdateSession(true)
+                        }}
+                        css={{
+                          marginRight: '6px',
+                          fontWeight: column.name === 'name' ? 'bold' : 'normal',
+                          cursor: column.name === 'name' ? 'pointer' : '',
+                        }}
+                        key={column.name + user.user_id}
+                        data-testid={`row-${rowIndex}-column-${columnIndex}`}
+                      >
+                        {user[column.data_mapper]}
                       </Td>
-                    </Tr>
-                  )
-                })}
-            </Tbody>
-          </Table>
+                    )
+                  })}
+                  <Td>
+                    {hoveredRow === user.user_id && (
+                      <IconButton
+                        aria-label={`delete-${user.user_id}`}
+                        icon={<DeleteIcon />}
+                        onClick={() => {
+                          setUserFormValue({ ...user })
+                          setAlerDeleteUserOpen(true)
+                        }}
+                      />
+                    )}
+                  </Td>
+                </Tr>
+              )
+            })}
+        </Tbody>
+      </Table>
       {isUserFormModalOpen && (
         <UserFormModal
           isOpen={isUserFormModalOpen}
