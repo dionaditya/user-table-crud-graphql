@@ -22,4 +22,6 @@ export const theme = extendTheme({
     heading,
     mono,
   },
+  initialColorMode: 'light',
+  useSystemColorMode: false,
 })
