@@ -4,7 +4,9 @@ import { jsx, css } from '@emotion/react'
 import { Button, Heading, Icon, Stack, Wrap, WrapItem, VStack } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import { UserDashboard } from '@/features/UserDashboard'
+
 import HomeIcon from '../public/home-icon.svg'
+
 
 import siteConfig from '~/site-config'
 
@@ -13,28 +15,28 @@ import type { NextPage } from '@/types/next'
 const Navbar = () => {
   return (
     <VStack alignItems="left">
-    <Button
-      background="transparent"
-      leftIcon={<HomeIcon />}
-      justifyContent="left"
-      marginBottom="10px"
-      css={{
-        '&:hover': {
-          background: 'transparent',
-          border: '1px solid white',
-          borderRadius: '4px',
-        },
-      }}
-    >
-      <span
+      <Button
+        background="transparent"
+        leftIcon={<HomeIcon />}
+        justifyContent="left"
+        marginBottom="10px"
         css={{
-          marginLeft: '24px',
+          '&:hover': {
+            background: 'transparent',
+            border: '1px solid white',
+            borderRadius: '4px',
+          },
         }}
       >
-        Dashboard
-      </span>
-    </Button>
-  </VStack>
+        <span
+          css={{
+            marginLeft: '24px',
+          }}
+        >
+          Dashboard
+        </span>
+      </Button>
+    </VStack>
   )
 }
 
@@ -58,7 +60,7 @@ const HomePage: NextPage = () => {
             color: 'white',
             position: 'sticky',
             top: 0,
-            zIndex: 4
+            zIndex: 4,
           }}
         >
           <Heading
