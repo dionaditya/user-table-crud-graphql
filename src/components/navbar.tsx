@@ -31,13 +31,6 @@ export const Navbar: React.FC = () => {
             variant="link"
           />
         ))}
-        <IconButton
-          aria-label="toggle dark mode"
-          color="currentColor"
-          icon={<Icon as={FaMoon} boxSize={5} />}
-          onClick={toggleColorMode}
-          variant="link"
-        />
       </HStack>
     </HStack>
   )
