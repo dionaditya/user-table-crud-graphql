@@ -335,7 +335,6 @@ const UserDashboard = () => {
         <Tbody>
           {usersList.length > 0 &&
             usersList.filter((user) => {
-              console.log(stringSimilarity(searchQuery, user.user_name))
               return searchQuery.length > 0 ? stringSimilarity(searchQuery, user.user_name) >= 0.1 : true
             }).map((user, rowIndex) => {
               return (
