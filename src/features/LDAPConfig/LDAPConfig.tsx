@@ -100,19 +100,28 @@ export const LDAPConfig = ({ payload }) => {
                             display: 'flex',
                             flexDirection: 'row',
                             gap: '28px',
+alignItems: 'center'
                           }}
                         >
                           <Tag size="lg" colorScheme={isSuccess ? 'green' : 'red'}>
                             {isSuccess ? 'Pass' : 'Failed'}
                           </Tag>
-                           {!isValidateSection && (
+<div css={{
+ display: 'flex', 
+ flexDirection: 'row',
+ gap: !isValidateSection ? '4px' : '',
+ alignItems: 'center'
+}}>
+{!isValidateSection && (
 <Fragment>
 {
 isExpanded ? <ChevronDownIcon /> : <ChevronRightIcon />
 }
 </Fragment>
 )}
-                          <span>{`${getSectionTitle(section, payload)} (${section})`}</span>
+<span>{`${getSectionTitle(section, payload)} (${section})`}</span>
+                   
+</div>
                         </Box>
                       </AccordionButton>
                       {!isValidateSection && (
