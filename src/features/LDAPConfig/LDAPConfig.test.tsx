@@ -172,7 +172,7 @@ describe('component: LDAPConfig', () => {
 
     expect(screen.queryByText('Clone4')).not.toBeNull()
     expect(screen.queryByText('Clone1')).not.toBeNull()
-    expect(screen.queryByText('Profile1')).not.toBeNull()
+    expect(screen.queryAllByText('Profile1').length).toBeGreaterThanOrEqual(2)
 
     expect(screen.queryByText('LDAP Filter not specified.')).not.toBeNull()
     expect(screen.queryByText('LDAP Filter too specific, no results returned, filter:(&(&(objectClass=user)(mail=john.doe+test@mycompany.com))(distinguishedName=CN=John Doe,CN=Users,DC=mycompanySharePoint,DC=com))')).not.toBeNull()
