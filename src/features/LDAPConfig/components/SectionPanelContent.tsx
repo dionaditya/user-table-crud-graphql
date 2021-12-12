@@ -242,10 +242,9 @@ const SectionPanelContent = ({ section, sectionData, isSuccess, userProfiles }) 
         >
           <SectionPanelTable columns={getColumnName(section)}>
             {profileData.map(({ attributeName, values }) => {
-              console.log(attributeName)
               return (
                 <Tr key={attributeName}>
-                  <Td>{attributeName}</Td>
+                  <Td>{attributeName === 'profileId' ? 'profile' : attributeName}</Td>
                   <Td>
                     <div
                       css={{
