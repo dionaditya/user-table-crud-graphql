@@ -72,7 +72,7 @@ const ProfileValuesContent = ({ attributeName, values, userProfiles }) => {
       return <Fragment>{`[${values.join(', ')}]`}</Fragment>
 
     case 'result':
-      return <Fragment>{getUserProfile(userProfiles, +values.split('/')[2])?.name}</Fragment>
+      return <Fragment>{getUserProfile(userProfiles, values)?.name}</Fragment>
 
     case 'allowed':
       return <Fragment>{values ? 'True' : 'False'}</Fragment>
@@ -222,7 +222,7 @@ const SectionPanelContent = ({ section, sectionData, isSuccess, userProfiles }) 
       )
 
     case 'profile':
-      const attributesName = ['processing', 'policies', 'result', 'allowed', 'evaluations']
+      const attributesName = ['processing', 'policies', 'profileId', 'allowed', 'evaluations']
 
       const profileData = Object.keys(sectionData.data)
         .filter(attributeName => attributesName.includes(attributeName))
@@ -244,7 +244,7 @@ const SectionPanelContent = ({ section, sectionData, isSuccess, userProfiles }) 
             {profileData.map(({ attributeName, values }) => {
               return (
                 <Tr key={attributeName}>
-                  <Td>{attributeName === 'result' ? 'profile' : attributeName}</Td>
+                  <Td>{attributeName === 'profileId' ? 'profile' : attributeName}</Td>
                   <Td>
                     <div
                       css={{
