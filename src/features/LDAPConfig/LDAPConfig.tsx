@@ -98,7 +98,7 @@ export const LDAPConfig = ({ payload }) => {
                           css={{
                             display: 'flex',
                             flexDirection: 'row',
-                            gap: '25px',
+                            gap: '28px',
                           }}
                         >
                           <Tag size="lg" colorScheme={isSuccess ? 'green' : 'red'}>
