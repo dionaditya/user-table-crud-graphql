@@ -249,10 +249,8 @@ const isEvaluations = attributeName === 'evaluations'
 css={{
  '&::first-letter': {
 textTransform: 'capitalize'
-  }, 
-display: 'flex',
-  alignItems: isEvaluations ? 'top' : ''
-}}
+  verticalAlign: isEvaluations ? 'text-bottom' : ''
+}}}
 >{attributeName === 'profileId' ? 'profile' : attributeName}</Td>
                   <Td>
                     <div
