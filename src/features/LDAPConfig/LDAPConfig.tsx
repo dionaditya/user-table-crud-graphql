@@ -14,6 +14,7 @@ import {
   CloseButton,
   Spinner,
 } from '@chakra-ui/react'
+import { ChevronRightIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import { ldapconfigApi } from '../../api/ldapConfig/ldapConfig.api'
 import { SectionPanelContent } from './components/SectionPanelContent'
 
@@ -104,10 +105,15 @@ export const LDAPConfig = ({ payload }) => {
                           <Tag size="lg" colorScheme={isSuccess ? 'green' : 'red'}>
                             {isSuccess ? 'Pass' : 'Failed'}
                           </Tag>
-                           {!isValidateSection && <AccordionIcon css={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(90deg'}} />}
+                           {!isValidateSection && (
+<Fragment>
+{
+isExpanded ? <ChevronDownIcon /> : <ChevronRightIcon />
+}
+</Fragment>
+)}
                           <span>{`${getSectionTitle(section, payload)} (${section})`}</span>
                         </Box>
-                        {!isValidateSection && <AccordionIcon css />}
                       </AccordionButton>
                       {!isValidateSection && (
                         <AccordionPanel pb={4} pl="17%">
