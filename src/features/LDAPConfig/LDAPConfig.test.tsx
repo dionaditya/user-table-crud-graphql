@@ -158,7 +158,7 @@ describe('component: LDAPConfig', () => {
       fireEvent.click(screen.getByText(`${getSectionTitle('profile', mockPayload)} (${'profile'})`))
     })
 
-    const profileAttributesName = ['processing', 'policies', 'profileId', 'allowed', 'evaluations']
+    const profileAttributesName = ['processing', 'policies', 'profile', 'allowed', 'evaluations']
 
     profileAttributesName.forEach((attributeName) => {
       expect(screen.queryByText(attributeName)).not.toBeNull()
