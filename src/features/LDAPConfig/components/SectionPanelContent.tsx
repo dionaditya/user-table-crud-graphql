@@ -72,9 +72,9 @@ const ProfileValuesContent = ({ attributeName, values, userProfiles }) => {
       return <Fragment>{`[${values.join(', ')}]`}</Fragment>
 
     case 'result':
-      return <Fragment>Profile 1</Fragment>
+      return <Fragment>{getUserProfile(userProfiles, +values.split('/')[2])}</Fragment>
 
-    case 'allowe
+    case 'allowed':
       return <Fragment>{values ? 'True' : 'False'}</Fragment>
 
     case 'evaluations':
