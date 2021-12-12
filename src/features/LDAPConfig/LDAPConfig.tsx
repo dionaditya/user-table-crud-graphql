@@ -98,7 +98,7 @@ export const LDAPConfig = ({ payload }) => {
                           css={{
                             display: 'flex',
                             flexDirection: 'row',
-                            gap: '20px',
+                            gap: '25px',
                           }}
                         >
                           <Tag size="lg" colorScheme={isSuccess ? 'green' : 'red'}>
@@ -109,7 +109,7 @@ export const LDAPConfig = ({ payload }) => {
                         {!isValidateSection && <AccordionIcon />}
                       </AccordionButton>
                       {!isValidateSection && (
-                        <AccordionPanel pb={4} pl="30%">
+                        <AccordionPanel pb={4} pl="15%">
                           {isExpanded && (
                             <SectionPanelContent
                               isSuccess={isSuccess}
