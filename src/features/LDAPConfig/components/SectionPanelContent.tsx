@@ -241,14 +241,16 @@ const SectionPanelContent = ({ section, sectionData, isSuccess, userProfiles }) 
           }}
         >
           <SectionPanelTable columns={getColumnName(section)}>
-            {profileData.map(({ attributeName, values }) => {
+            {profileData.map(({ attributeName, values }, index) => {
+const isEvaluations = attributeName === 'evaluations'
               return (
                 <Tr key={attributeName}>
                   <Td
 css={{
  '&::first-letter': {
 textTransform: 'capitalize'
-  }
+  }, 
+  alignItems: isEvaluations ? 'top' : ''
 }}
 >{attributeName === 'profileId' ? 'profile' : attributeName}</Td>
                   <Td>
