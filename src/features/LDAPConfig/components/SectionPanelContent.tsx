@@ -250,6 +250,7 @@ css={{
  '&::first-letter': {
 textTransform: 'capitalize'
   }, 
+display: 'flex',
   alignItems: isEvaluations ? 'top' : ''
 }}
 >{attributeName === 'profileId' ? 'profile' : attributeName}</Td>
