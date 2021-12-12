@@ -257,7 +257,8 @@ textTransform: 'capitalize'
 display: 'flex',
 flexDirection: 'row',
 alignItems: isEvaluations ? 'top' : 'center',
-background: 'red'
+background: 'red',
+height: '100%'
 }}>
 
 
