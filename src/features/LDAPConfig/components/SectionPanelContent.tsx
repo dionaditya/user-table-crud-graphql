@@ -75,7 +75,7 @@ const ProfileValuesContent = ({ attributeName, values, userProfiles }) => {
       return <Fragment>{getUserProfile(userProfiles, values)?.name}</Fragment>
 
     case 'allowed':
-      return <Fragment>{values ? 'True' : 'False'}</Fragment>
+      return <Fragment>{values.toString()}</Fragment>
 
     case 'evaluations':
       return (
