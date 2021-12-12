@@ -111,7 +111,7 @@ alignItems: 'center'
  flexDirection: 'row',
  gap: !isValidateSection ? '4px' : '',
  alignItems: 'center',
- marginLeft: isValidateSection ? '10px' : ''
+ marginLeft: isValidateSection ? '12px' : ''
 }}>
 {!isValidateSection && (
 <Fragment>
