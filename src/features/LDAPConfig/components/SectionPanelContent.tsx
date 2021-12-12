@@ -255,7 +255,9 @@ textTransform: 'capitalize'
 >
 <div css={{
 display: 'flex',
-alignItems: isEvaluations ? 'top' : 'center'
+flexDirection: 'row',
+alignItems: isEvaluations ? 'top' : 'center',
+background: 'red'
 }}>
 
 
