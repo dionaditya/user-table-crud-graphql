@@ -168,7 +168,7 @@ describe('component: LDAPConfig', () => {
     expect(screen.queryByText('policies_filtered [1, 2, 3, 86]')).not.toBeNull()
     expect(screen.queryByText('policies_with_operations [1, 2, 3, 86]')).not.toBeNull()
     expect(screen.queryByText('[2]')).not.toBeNull()
-    expect(screen.queryByText('Profile10'))
+    expect(screen.queryAllByText('Profile1').length).toBeGreaterThanOrEqual(1)
 
     expect(screen.queryByText('Clone4')).not.toBeNull()
     expect(screen.queryByText('Clone1')).not.toBeNull()
