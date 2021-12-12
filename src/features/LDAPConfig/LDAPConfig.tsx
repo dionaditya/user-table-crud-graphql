@@ -104,7 +104,7 @@ alignItems: 'center'
                           }}
                         >
                           <Tag size="lg" colorScheme={isSuccess ? 'green' : 'red'}>
-                            {isSuccess ? 'Pass' : 'Failed'}
+                            {isSuccess ? 'Passed' : 'Failed'}
                           </Tag>
 <div css={{
  display: 'flex', 
