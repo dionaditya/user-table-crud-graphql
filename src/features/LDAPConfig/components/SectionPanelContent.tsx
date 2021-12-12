@@ -251,18 +251,9 @@ css={{
  '&::first-letter': {
 textTransform: 'capitalize'
 }}}
-
+valign="top"
 >
-<div css={{
-display: 'flex',
-flexDirection: 'row',
-alignItems: isEvaluations ? 'top' : 'center',
-background: 'red',
-height: '100%'
-}}>
-
-
-{attributeName === 'profileId' ? 'profile' : attributeName} </div></Td>
+{attributeName === 'profileId' ? 'profile' : attributeName}</Td>
                   <Td>
                     <div
                       css={{
