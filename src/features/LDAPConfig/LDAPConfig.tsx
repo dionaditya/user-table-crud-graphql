@@ -109,7 +109,7 @@ export const LDAPConfig = ({ payload }) => {
                         {!isValidateSection && <AccordionIcon />}
                       </AccordionButton>
                       {!isValidateSection && (
-                        <AccordionPanel pb={4}>
+                        <AccordionPanel pb={4} pl="30%">
                           {isExpanded && (
                             <SectionPanelContent
                               isSuccess={isSuccess}
