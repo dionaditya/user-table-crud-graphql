@@ -110,7 +110,8 @@ alignItems: 'center'
  display: 'flex', 
  flexDirection: 'row',
  gap: !isValidateSection ? '4px' : '',
- alignItems: 'center'
+ alignItems: 'center',
+ marginLeft: isValidateSection ? '6px' : ''
 }}>
 {!isValidateSection && (
 <Fragment>
