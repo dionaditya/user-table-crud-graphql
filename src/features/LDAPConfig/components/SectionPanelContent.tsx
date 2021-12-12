@@ -244,7 +244,13 @@ const SectionPanelContent = ({ section, sectionData, isSuccess, userProfiles }) 
             {profileData.map(({ attributeName, values }) => {
               return (
                 <Tr key={attributeName}>
-                  <Td>{attributeName === 'profileId' ? 'profile' : attributeName}</Td>
+                  <Td
+css={{
+ '&::first-letter': {
+textTransform: 'capitalize'
+  }
+}}
+>{attributeName === 'profileId' ? 'profile' : attributeName}</Td>
                   <Td>
                     <div
                       css={{
