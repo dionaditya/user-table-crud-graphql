@@ -104,12 +104,13 @@ export const LDAPConfig = ({ payload }) => {
                           <Tag size="lg" colorScheme={isSuccess ? 'green' : 'red'}>
                             {isSuccess ? 'Pass' : 'Failed'}
                           </Tag>
+                           {!isValidateSection && <AccordionIcon css={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(90deg'}} />}
                           <span>{`${getSectionTitle(section, payload)} (${section})`}</span>
                         </Box>
-                        {!isValidateSection && <AccordionIcon />}
+                        {!isValidateSection && <AccordionIcon css />}
                       </AccordionButton>
                       {!isValidateSection && (
-                        <AccordionPanel pb={4} pl="15%">
+                        <AccordionPanel pb={4} pl="17%">
                           {isExpanded && (
                             <SectionPanelContent
                               isSuccess={isSuccess}
