@@ -26,7 +26,7 @@ describe('component: LDAPConfig', () => {
       expect(screen.queryByText(`${getSectionTitle(section, mockPayload)} (${section})`)).not.toBeNull()
     })
 
-    expect(screen.queryAllByText('Pass').length).toEqual(6)
+    expect(screen.queryAllByText('Passed').length).toEqual(6)
 
     expect(screen.queryAllByText('Failed').length).toEqual(1)
 
@@ -45,7 +45,7 @@ describe('component: LDAPConfig', () => {
       expect(screen.queryByText(`${getSectionTitle(section, mockPayload)} (${section})`)).not.toBeNull()
     })
 
-    expect(screen.queryAllByText('Pass').length).toEqual(6)
+    expect(screen.queryAllByText('Passed').length).toEqual(6)
 
     expect(screen.queryAllByText('Failed').length).toEqual(1)
 
